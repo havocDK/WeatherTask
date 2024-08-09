@@ -14,6 +14,9 @@
 		E64A94812C65E23000CB3718 /* WeatherTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A94802C65E23000CB3718 /* WeatherTaskTests.swift */; };
 		E64A948B2C65E23000CB3718 /* WeatherTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A948A2C65E23000CB3718 /* WeatherTaskUITests.swift */; };
 		E64A948D2C65E23000CB3718 /* WeatherTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A948C2C65E23000CB3718 /* WeatherTaskUITestsLaunchTests.swift */; };
+		E64A949E2C662A9D00CB3718 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A949D2C662A9D00CB3718 /* DataStructures.swift */; };
+		E64A94A02C662AD000CB3718 /* WeatherListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A949F2C662AD000CB3718 /* WeatherListView.swift */; };
+		E64A94A22C662E3200CB3718 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64A94A12C662E3200CB3718 /* Enums.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		E64A94862C65E23000CB3718 /* WeatherTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64A948A2C65E23000CB3718 /* WeatherTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTaskUITests.swift; sourceTree = "<group>"; };
 		E64A948C2C65E23000CB3718 /* WeatherTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E64A949D2C662A9D00CB3718 /* DataStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
+		E64A949F2C662AD000CB3718 /* WeatherListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherListView.swift; sourceTree = "<group>"; };
+		E64A94A12C662E3200CB3718 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 			children = (
 				E64A946E2C65E22F00CB3718 /* WeatherTaskApp.swift */,
 				E64A94702C65E22F00CB3718 /* ContentView.swift */,
+				E64A949F2C662AD000CB3718 /* WeatherListView.swift */,
+				E64A949D2C662A9D00CB3718 /* DataStructures.swift */,
+				E64A94A12C662E3200CB3718 /* Enums.swift */,
 				E64A94722C65E23000CB3718 /* Assets.xcassets */,
 				E64A94742C65E23000CB3718 /* WeatherTask.entitlements */,
 				E64A94752C65E23000CB3718 /* Preview Content */,
@@ -259,8 +268,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E64A949E2C662A9D00CB3718 /* DataStructures.swift in Sources */,
 				E64A94712C65E22F00CB3718 /* ContentView.swift in Sources */,
+				E64A94A22C662E3200CB3718 /* Enums.swift in Sources */,
 				E64A946F2C65E22F00CB3718 /* WeatherTaskApp.swift in Sources */,
+				E64A94A02C662AD000CB3718 /* WeatherListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
