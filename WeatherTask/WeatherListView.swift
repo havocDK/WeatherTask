@@ -23,18 +23,18 @@ struct WeatherList: View {
             infoString = "\(components.hour ?? 0):00 - Temperature: \(hourlyData.temperature) \(temperatureUnit) \n" +
                 "Windspeed: \(hourlyData.windspeed) \(speedUnit) \n" +
                 "Weather status: \(WeatherCode(rawValue: hourlyData.weathercode)?.description ?? "Unknown weather")";
-            let rowData: RowData = RowData(dateString: dateString, infoString: infoString)
+            let rowData: RowData = RowData(dateString: dateString, infoString: infoString);
             resultArray.append(rowData);
         }
         self.dataArray = resultArray;
         
     }
-    
+    //group all hours by day
     var groupedByDate: [String: [RowData]] {
-        Dictionary(grouping: dataArray, by: {$0.dateString})
+        Dictionary(grouping: dataArray, by: {$0.dateString});
     }
     var headers: [String] {
-        groupedByDate.map({ $0.key }).sorted()
+        groupedByDate.map({ $0.key }).sorted();
     }
     var body: some View {
         List(){

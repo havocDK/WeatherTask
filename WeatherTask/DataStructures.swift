@@ -7,6 +7,18 @@
 
 import Foundation
 
+struct CityData: Hashable, Equatable {
+    var cityName: String
+    var weatherDataURL: String
+    var weatherData:LocationWeatherData?
+    static func == (lhs: CityData, rhs: CityData) -> Bool {
+        lhs.cityName == rhs.cityName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(cityName)
+        hasher.combine(weatherDataURL)
+    }
+}
 struct LocationWeatherData {
     var latitude: Float
     var longitude: Float
@@ -26,70 +38,57 @@ struct LocationWeatherData {
         self.hourly = [];
     }
     
-    init(jsonString: String) {
+    init(dataDict: [String: Any]) {
         var weatherDataDict:LocationWeatherData? = nil;
-        if let data = jsonString.data(using: .utf8) {
-            do {
-                if let dataDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    weatherDataDict = LocationWeatherData();
-                    if let latitude = dataDict["latitude"] as? Float {
-                        weatherDataDict?.latitude = latitude;
-                    }
-                    if let longitude = dataDict["longitude"] as? Float {
-                        weatherDataDict?.longitude = longitude;
-                    }
-                    if let timezone = dataDict["timezone_abbreviation"] as? String {
-                        weatherDataDict?.timezone = timezone;
-                    }
-                    if let elevation = dataDict["elevation"] as? Float {
-                        weatherDataDict?.elevation = elevation;
-                    }
-                    if let hourlyUnits = dataDict["hourly_units"] as? [String: Any] {
-                        if let temperatureUnits = hourlyUnits["temperature_2m"] as? String {
-                            weatherDataDict?.temperatureUnits = temperatureUnits;
-                        }
-                        if let speedUnits = hourlyUnits["windspeed_10m"] as? String {
-                            weatherDataDict?.speedUnits = speedUnits;
-                        }
-                    }
-                    if let hourly = dataDict["hourly"] as? [String:Any] {
-                        let timeArray:[String] = hourly["time"] as? [String] ?? [];
-                        let temperatureArray:[Double] = hourly["temperature_2m"] as? [Double] ?? [];
-                        let windspeedArray:[Double] = hourly["windspeed_10m"] as? [Double] ?? [];
-                        let weathercodeArray:[Int] = hourly["weathercode"] as? [Int] ?? [];
-                        if timeArray.count == temperatureArray.count && timeArray.count == windspeedArray.count && timeArray.count == weathercodeArray.count {
-                            var hourlyArray:[HourlyWeatherData] = [];
-                            let length = timeArray.count;
-                            let dateFormatter = DateFormatter();
-                            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm";
-                            for i in 0...length-1{
-                                var currentHourly = HourlyWeatherData()
-                                if let time = dateFormatter.date(from: timeArray[i]){
-                                    currentHourly.time = time;
-                                }
-                                currentHourly.temperature = temperatureArray[i];
-                                currentHourly.windspeed = windspeedArray[i];
-                                currentHourly.weathercode = weathercodeArray[i];
-                                hourlyArray.append(currentHourly);
-                            }
-                            weatherDataDict?.hourly = hourlyArray;
-                        }
-                        
-                    }
-                }
+        weatherDataDict = LocationWeatherData();
+        if let latitude = dataDict["latitude"] as? Float {
+            weatherDataDict?.latitude = latitude;
+        }
+        if let longitude = dataDict["longitude"] as? Float {
+            weatherDataDict?.longitude = longitude;
+        }
+        if let timezone = dataDict["timezone_abbreviation"] as? String {
+            weatherDataDict?.timezone = timezone;
+        }
+        if let elevation = dataDict["elevation"] as? Float {
+            weatherDataDict?.elevation = elevation;
+        }
+        if let hourlyUnits = dataDict["hourly_units"] as? [String: Any] {
+            if let temperatureUnits = hourlyUnits["temperature_2m"] as? String {
+                weatherDataDict?.temperatureUnits = temperatureUnits;
             }
-            catch {
-                print(error.localizedDescription)
+            if let speedUnits = hourlyUnits["windspeed_10m"] as? String {
+                weatherDataDict?.speedUnits = speedUnits;
             }
         }
-        else {
-            print("Could not read weather data!")
+        if let hourly = dataDict["hourly"] as? [String:Any] {
+            let timeArray:[String] = hourly["time"] as? [String] ?? [];
+            let temperatureArray:[Double] = hourly["temperature_2m"] as? [Double] ?? [];
+            let windspeedArray:[Double] = hourly["windspeed_10m"] as? [Double] ?? [];
+            let weathercodeArray:[Int] = hourly["weathercode"] as? [Int] ?? [];
+            if timeArray.count == temperatureArray.count && timeArray.count == windspeedArray.count && timeArray.count == weathercodeArray.count {
+                var hourlyArray:[HourlyWeatherData] = [];
+                let length = timeArray.count;
+                let dateFormatter = DateFormatter();
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm";
+                for i in 0...length-1 {
+                    var currentHourly = HourlyWeatherData();
+                    if let time = dateFormatter.date(from: timeArray[i]){
+                        currentHourly.time = time;
+                    }
+                    currentHourly.temperature = temperatureArray[i];
+                    currentHourly.windspeed = windspeedArray[i];
+                    currentHourly.weathercode = weathercodeArray[i];
+                    hourlyArray.append(currentHourly);
+                }
+                weatherDataDict?.hourly = hourlyArray;
+            }
         }
         if nil != weatherDataDict {
-            self = weatherDataDict!
+            self = weatherDataDict!;
         }
         else {
-            self.init()
+            self.init();
         }
     }
 }
@@ -101,7 +100,7 @@ struct HourlyWeatherData {
     var weathercode: Int
     
     init() {
-        time = Date.now
+        time = Date.now;
         temperature = 0.0;
         windspeed = 0.0;
         weathercode = 0;
@@ -109,19 +108,18 @@ struct HourlyWeatherData {
 }
 
 struct RowData: Identifiable , Codable, Comparable{
-      
     var dateString: String
     var infoString: String
     var id: UUID
     
     init(dateString: String, infoString: String) {
-        self.dateString = dateString
-        self.infoString = infoString
-        self.id = UUID()
+        self.dateString = dateString;
+        self.infoString = infoString;
+        self.id = UUID();
     }
     
     static func < (lhs: RowData, rhs: RowData) -> Bool {
-        lhs.dateString < rhs.dateString
+        lhs.dateString < rhs.dateString;
     }
 }
 

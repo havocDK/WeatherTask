@@ -39,53 +39,53 @@ enum WeatherCode: Int {
     var description: String {
         switch self {
         case .clear:
-            return "Clear sky"
+            return "Clear sky";
         case .mainlyClear:
-            return "Mainly clear"
+            return "Mainly clear";
         case .partlyCloudy:
-            return "Partly cloudy"
+            return "Partialy cloudy";
         case .overcast:
-            return "Overcast"
+            return "Overcast";
         case .fog:
-            return "Fog"
+            return "Fog";
         case .rimeFog:
-            return "Depositing rime fog"
+            return "Depositing rime fog";
         case .drizzleLight:
-            return "Light drizzle"
+            return "Light drizzle";
         case .drizzleModerate:
-            return "Moderate drizzle"
+            return "Moderate drizzle";
         case .drizzleDense:
-            return "Dense drizzle"
+            return "Dense drizzle";
         case .freezingDrizzleLight:
-            return "Light freezing drizzle"
+            return "Light freezing drizzle";
         case .freezingDrizzleDense:
-            return "Dense freezing drizzle"
+            return "Dense freezing drizzle";
         case .snowSlight:
-            return "Light snow fall"
+            return "Light snow fall";
         case .snowModerate:
-            return "Moderate snow fall"
+            return "Moderate snow fall";
         case .snowHeavy:
-            return "Heavy snow fall"
+            return "Heavy snow fall";
         case .snowGrains:
-            return "Snow grains"
+            return "Snow grains";
         case .rainShowerSlight:
-            return "Slight rain showers"
+            return "Slight rain showers";
         case .rainShowerModerate:
-            return "Moderate rain showers"
+            return "Moderate rain showers";
         case .rainShowerViolent:
-            return "Violent rain showers"
+            return "Violent rain showers";
         case .snowShowerSlight:
-            return "Slight snow showers"
+            return "Slight snow showers";
         case .snowShowerHeavy:
-            return "Heavy snow showers"
+            return "Heavy snow showers";
         case .thunderstorm:
-            return "Thunderstorm"
+            return "Thunderstorm";
         case .thunderHailSlight:
-            return "Thunderstorm with slight hail"
+            return "Thunderstorm with slight hail";
         case .thunderHailHeavy:
-            return "Thunderstorm with heavy hail"
+            return "Thunderstorm with heavy hail";
         default:
-            return "Unknown weather condition"
+            return "Unknown weather condition";
         }
     }
 }
